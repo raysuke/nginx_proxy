@@ -1,0 +1,18 @@
+version: '2'
+# service
+services:
+
+  web:
+    image: nginx
+    container_name: web
+    environment:
+      VIRTUAL_HOST: web.localhost
+    restart: always
+    volumes:
+      - ./html:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+
+networks:
+  default:
+    external:
+      name: common_link
